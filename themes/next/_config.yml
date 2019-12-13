@@ -182,16 +182,19 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || github
   E-Mail: mailto:kekeyu260@gmail.com || envelope
   Weibo: https://www.weibo.com/2055422355 || weibo
+  Instagram: https://www.instagram.com/kekeyu2266/?hl=zh-cn || instagram
+  Zhihu: https://www.zhihu.com/people/zhu-bu-xue || custom zhihu
+  Douban: https://www.douban.com/people/pukeyu/ || custom douban
+
+  #GitHub: https://github.com/yourname || github
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
   #YouTube: https://youtube.com/yourname || youtube
-  Instagram: https://www.instagram.com/kekeyu2266/?hl=zh-cn || instagram
   #Skype: skype:yourname?call|chat || skype
 
 social_icons:
@@ -712,7 +715,7 @@ leancloud_visitors:
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
-  security: true
+  security: false
   betterPerformance: false
 
 # Another tool to show number of visitors to each article.
