@@ -187,7 +187,6 @@ social:
   Instagram: https://www.instagram.com/kekeyu2266/?hl=zh-cn || instagram
   Zhihu: https://www.zhihu.com/people/zhu-bu-xue || custom zhihu
   Douban: https://www.douban.com/people/pukeyu/ || custom douban
-
   #GitHub: https://github.com/yourname || github
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -199,7 +198,7 @@ social:
 
 social_icons:
   enable: true
-  icons_only: false
+  icons_only: true
   transition: true
 
 # Blog rolls
