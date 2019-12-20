@@ -1,21 +1,25 @@
 .posts-expand {
   padding-top: 40px;
 
-  +mobile() {
+  + mobile() {
     margin: 0 20px;
   }
 }
 
 .post-body {
-  +desktop() {
-    text-align: unquote(hexo-config('text_align.desktop'));
+  + desktop() {
+    text-align: unquote(hexo-config("text_align.desktop"));
   }
 
-  +tablet-mobile() {
-    text-align: unquote(hexo-config('text_align.mobile'));
+  + tablet-mobile() {
+    text-align: unquote(hexo-config("text_align.mobile"));
   }
 
-  h2, h3, h4, h5, h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     padding-top: 10px;
 
     .header-anchor {
@@ -39,9 +43,7 @@
     /*border: 1px solid $gray-lighter;*/
     box-sizing: border-box;
     /*padding: 3px;*/
-    margin-bottom: 10px
-
-    +mobile() {
+    margin-bottom: 10px + mobile() {
       padding: initial;
     }
   }
@@ -49,11 +51,12 @@
   .image-caption {
     margin: auto;
     display: block;
-    width: 80%
-    margin-bottom: 10px
+    width: 80%;
+    margin-bottom: 10px;
   }
 
-  iframe, video {
+  iframe,
+  video {
     margin-bottom: 20px;
   }
 
@@ -65,7 +68,9 @@
     position: relative;
     width: 100%;
 
-    iframe, object, embed {
+    iframe,
+    object,
+    embed {
       height: 100%;
       left: 0;
       margin: 0;
