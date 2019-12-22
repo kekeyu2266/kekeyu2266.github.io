@@ -626,7 +626,7 @@ valine:
 
 # LiveRe comments system
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC80NzcyNi8yNDIyNA==
+livere_uid:
 
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
