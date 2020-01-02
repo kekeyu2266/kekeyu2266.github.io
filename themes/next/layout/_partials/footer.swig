@@ -18,6 +18,7 @@
     <i class="fa fa-{{ theme.footer.icon.name }}"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright or author }}</span>
+  <span>&nbsp;<a href="http://beian.miit.gov.cn/">陕ICP备20000041号-1</a></span>
 
   {%- if config.symbols_count_time.total_symbols %}
     <span class="post-meta-divider">|</span>
@@ -62,6 +63,9 @@
     {{- __('footer.theme') }} – {{ next_url(next_site, 'NexT.' + theme.scheme, {class: 'theme-link'}) }}
     {%- if theme.footer.theme.version %} v{{ next_version }}{%- endif %}
   </div>
+  <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
+  <img src="/images/upyun.png" width="80">
+  </a>
 {%- endif %}
 
 {%- if theme.add_this_id %}
