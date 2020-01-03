@@ -694,7 +694,7 @@ tencent_mta:
 # AppID and AppKey are recommended to be the same as valine's for counter compatibility.
 # Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
-  enable: true
+  enable: false
   app_id: AL2KyLBiQNdS3FEv9g8VzYin-MdYXbMMI
   app_key: i2ERxOMudk24j97xBiqmBjjB
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
