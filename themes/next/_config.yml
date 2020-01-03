@@ -265,12 +265,12 @@ tag_icon: false
 # Front-matter variable (unsupport animation).
 reward_settings:
   # If true, reward will be displayed in every article by default.
-  enable: false
+  enable: true
   animation: false
   #comment: Donate comment here.
 
 reward:
-  #wechatpay: /images/wechatpay.png
+  wechatpay: /images/wechatpay.png
   #alipay: /images/alipay.png
   #bitcoin: /images/bitcoin.png
 
@@ -685,9 +685,9 @@ tencent_mta:
 
 # Wechat Subscriber
 #wechat_subscriber:
-#enabled: true
-#qcode: /uploads/wechat-qcode.jpg
-#description: 扫一扫关注我的微信公众号
+# enabled: true
+# qcode: /uploads/wechat-qcode.jpg
+# description: 扫一扫关注我的微信公众号
 
 # Show number of visitors of each article.
 # You can visit https://leancloud.cn to get AppID and AppKey.
