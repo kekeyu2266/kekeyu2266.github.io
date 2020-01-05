@@ -71,13 +71,13 @@ footer:
     # Hexo link (Powered by Hexo).
     enable: true
     # Version info of Hexo after Hexo link (vX.X.X).
-    version: true
+    version: false
 
   theme:
     # Theme & scheme info link (Theme - NexT.scheme).
     enable: true
     # Version info of NexT after scheme info (vX.X.X).
-    version: true
+    version: false
 
   # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
@@ -193,8 +193,8 @@ social:
 
 social_icons:
   enable: true
-  icons_only: false
-  transition: true
+  icons_only: true
+  transition: false
 
 # Blog rolls
 links_settings:
@@ -211,11 +211,11 @@ links:
 toc:
   enable: true
   # Automatically add list number to toc.
-  number: true
+  number: false
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: false
+  expand_all: true
   # Maximum heading depth of generated toc.
   max_depth: 6
 
@@ -245,7 +245,7 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: true
+    enable: false
     another_day: true
   categories: true
 
