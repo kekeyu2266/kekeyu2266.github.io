@@ -100,10 +100,12 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
+  -
     type: git
     repository: https://github.com/kekeyu2266/kekeyu2266.github.io
     branch: master
-    #type: leancloud_counter_security_sync
+  -
+    type: leancloud_counter_security_sync
 
 symbols_count_time:
   symbols: true # 文章字数
@@ -125,7 +127,7 @@ image_caption:
   class_name: #if you wanna customize the style for the caption,you can assign a class name, default is 'image-caption'
 
 leancloud_counter_security:
-  enable_sync: false
+  enable_sync: true
   app_id: AL2KyLBiQNdS3FEv9g8VzYin-MdYXbMMI
   app_key: i2ERxOMudk24j97xBiqmBjjB
   username: kekeyu
