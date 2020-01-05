@@ -104,12 +104,12 @@ deploy:
     type: git
     repository: https://github.com/kekeyu2266/kekeyu2266.github.io
     branch: master
-  -
-    type: leancloud_counter_security_sync
+  #-
+  #  type: leancloud_counter_security_sync
 
 symbols_count_time:
-  symbols: true # 文章字数
-  time: true # 阅读时长
+  symbols: false # 文章字数
+  time: false # 阅读时长
   total_symbols: false # 所有文章总字数
   total_time: false # 所有文章阅读中时长
 
@@ -127,8 +127,8 @@ image_caption:
   class_name: #if you wanna customize the style for the caption,you can assign a class name, default is 'image-caption'
 
 leancloud_counter_security:
-  enable_sync: true
-  app_id: 21Dp66sLpnXis9SThRByP0PV-gzGzoHsz
-  app_key: nwFK6iiAxVmQdM1vxJKwVXOu
-  username: kekeyu260
+  enable_sync: false
+  app_id: Ie7Mr01iNklOLbiSuk0oBshz-gzGzoHsz
+  app_key: 14xhETg0mXkzkXmFmtA0D5hT
+  username: kekeyu2266
   password: cmcc
