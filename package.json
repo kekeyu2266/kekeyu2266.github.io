@@ -9,7 +9,7 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "5.0.2"
+    "version": "5.0.0"
   },
   "dependencies": {
     "acorn": "^7.4.0",
