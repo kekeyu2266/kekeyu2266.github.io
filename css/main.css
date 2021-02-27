@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #79b9ff;
+  background: #c6c24f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2572,9 +2572,12 @@ code {
   hyphens: auto;
 }
 h2 {
-  border-left: 20px #f1c40f solid;
-  line-height: 1.8;
-  padding-left: 12px;
+/* border-left: 20px #f1c40f solid; */
+/* line-height: 1.8;
+    padding: 12px;
+    background-color: #f1c40f; */
+  font-size: 1.7em;
+  font-weight: bold;
 }
 .post-body h3 {
   font-family: Optima-Regular, PingFangTC-light;
