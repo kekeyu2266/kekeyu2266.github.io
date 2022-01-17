@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="术不学" type="application/atom+xml">
+  <meta name="google-site-verification" content="dvubMpE42Qya09z2BYW87IqA76kfQBqi-C0ZqwRA8lA">
+  <meta name="msvalidate.01" content="CDC7A5E5569235E7D9664425983E208A">
+  <meta name="baidu-site-verification" content="9xW01vDe2m">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://kekeyu.top').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="快速预览 输入内容搜索结果立刻显示，无需等待 做好日常文件的命名，想找什么文件 1 秒就够了 当速度快到发指，你就不需要指定搜索范围  引言只要使用电脑，就都遇到过搜索文件这个操作。windows 自带的搜索工具缓慢而笨重，要指定搜索范围，由于要实现建立索引所以新增的文件可能搜不到，总之使用 windows 自带搜索，能不能搜到简直是看运气，更别提建立索引还需要占用内存等系统资源。 everyt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一秒找到你想要的文件">
+<meta property="og:url" content="https://kekeyu.top/posts/a3a0f09a.html">
+<meta property="og:site_name" content="术不学">
+<meta property="og:description" content="快速预览 输入内容搜索结果立刻显示，无需等待 做好日常文件的命名，想找什么文件 1 秒就够了 当速度快到发指，你就不需要指定搜索范围  引言只要使用电脑，就都遇到过搜索文件这个操作。windows 自带的搜索工具缓慢而笨重，要指定搜索范围，由于要实现建立索引所以新增的文件可能搜不到，总之使用 windows 自带搜索，能不能搜到简直是看运气，更别提建立索引还需要占用内存等系统资源。 everyt">
+<meta property="og:locale">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCZZQA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFqcq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFH9s.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFLj0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFb3n.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFjBT.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCkCC9.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFvHU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCFzEF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCkSN4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCkp4J.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCkP3R.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/QCkig1.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/27/Q9HlPe.png">
+<meta property="article:published_time" content="2019-11-27T10:19:19.000Z">
+<meta property="article:modified_time" content="2019-11-27T10:19:19.000Z">
+<meta property="article:author" content="术不学">
+<meta property="article:tag" content="技巧">
+<meta property="article:tag" content="everything">
+<meta property="article:tag" content="文件管理">
+<meta property="article:tag" content="搜索">
+<meta property="article:tag" content="软件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/27/QCZZQA.png">
+
+<link rel="canonical" href="https://kekeyu.top/posts/a3a0f09a.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500704106");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+  <title>一秒找到你想要的文件 | 术不学</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YH548Z0BTD"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YH548Z0BTD');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">术不学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">艺术、技术都来自于练习</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://kekeyu.top/posts/a3a0f09a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="术不学">
+      <meta itemprop="description" content="一个个人写东西的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="术不学">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          一秒找到你想要的文件
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-27 18:19:19" itemprop="dateCreated datePublished" datetime="2019-11-27T18:19:19+08:00">2019-11-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">软件</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://s2.ax1x.com/2019/11/27/QCZZQA.png" alt="everything软件主界面"><span class="image-caption">everything软件主界面</span></p>
+<h3 id="快速预览"><a href="#快速预览" class="headerlink" title="快速预览"></a>快速预览</h3><ul>
+<li>输入内容搜索结果立刻显示，无需等待</li>
+<li>做好日常文件的命名，想找什么文件 1 秒就够了</li>
+<li>当速度快到发指，你就不需要指定搜索范围</li>
+</ul>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>只要使用电脑，就都遇到过搜索文件这个操作。windows 自带的搜索工具缓慢而笨重，要指定搜索范围，由于要实现建立索引所以新增的文件可能搜不到，总之使用 windows 自带搜索，能不能搜到简直是看运气，更别提建立索引还需要占用内存等系统资源。</p>
+<p>everything 是一个绝佳的替代工具，<strong>快</strong>、<strong>简单</strong>、<strong>免费</strong>、<strong>小巧</strong>，试过一次就难以忘记。</p>
+ <span id="more"></span>
+
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><strong>安装</strong>：绿色软件不需要安装，解压后只有两个文件，一个是主程序（2MB 大小）一个是中文语言包。推荐在官网下载便携版： <a target="_blank" rel="noopener" href="https://www.voidtools.com/zh-cn/downloads/">https://www.voidtools.com/zh-cn/downloads/</a></p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFqcq.png" alt="非常简洁小巧的执行文件，无需安装"><span class="image-caption">非常简洁小巧的执行文件，无需安装</span></p>
+<p><strong>启动</strong>：双击主程序就可以直接打开，速度飞快。在电脑上第一次打开，大概需要花费 2-3 秒来建立它自身的数据库索引。等待 3 秒后就可以立刻开始使用。之后每次启动都不需要建立索引，不到 1 秒就可以完成启动了。</p>
+<p>windows10 系统，首次运行会有如下询问，建议选择<strong>以管理员身份运行</strong></p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFH9s.png" alt="建议选择”以管理员身份运行“"><span class="image-caption">建议选择”以管理员身份运行“</span></p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFLj0.png" alt="直接确认即可"><span class="image-caption">直接确认即可</span></p>
+<p><strong>界面</strong>：只有一个搜索框和搜索结果显示界面。搜索框里输入一个字，结果立刻显示刷新毫无延时。结果默认是名称、路径（文件所在的位置）、文件大小、修改时间。点哪个就按哪个排序。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFb3n.png" alt="清爽的主界面"><span class="image-caption">清爽的主界面</span></p>
+<p>everything 搜索是不需要指定搜索范围的，因为它太快了（如果你非要指定范围也可以），12 万个文件只需要 1 秒就可以建立索引，建立索引仅需一次。我试过 6 块 3TB 的硬盘，建立索引也只花了 3 秒。搜索结果也是实时显示，指定搜索范围反而是浪费时间。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFjBT.gif" alt="动画：演示文件搜索"><span class="image-caption">动画：演示文件搜索</span></p>
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><p><strong>它只能搜索文件名</strong>，不能搜索文件内容。但如果建立良好的文件命名习惯，这个局限性完全可以克服。</p>
+<p>还有一个小问题，它只能搜索 NTFS 文件系统的盘符，但在 2019 年这个已经不是问题，现在的 Windows 全都默认这种文件系统。</p>
+<p>介绍到这里就已经足够了，因为搜索速度快到发指，压倒一切。但是我想再分享一些使用的细节。</p>
+<h3 id="特殊玩法"><a href="#特殊玩法" class="headerlink" title="特殊玩法"></a>特殊玩法</h3><h4 id="打开文件所在目录"><a href="#打开文件所在目录" class="headerlink" title="打开文件所在目录"></a>打开文件所在目录</h4><p>搜索到结果后，双击就可以打开。如果只是想到达这个文件所在的目录，那么直接<strong>右键</strong>-<strong>打开路径</strong>就可以打开目录了，非常方便。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCkCC9.gif" alt="动画：打开文件所在目录"><span class="image-caption">动画：打开文件所在目录</span></p>
+<h4 id="排除一些文件或者目录"><a href="#排除一些文件或者目录" class="headerlink" title="排除一些文件或者目录"></a>排除一些文件或者目录</h4><p>这家伙实在太快了，按下键盘立刻就显示结果，有时候反而会暴露我们的一些隐私（你懂的）；后缀名为<code>.lnk</code>的快捷方式，文件名以~！开头的 office 隐藏文件，已经删除到回收站的文件，这些文件没有任何意义，出现在结果列表里反而是一种干扰。我们可以使用<strong>排除列表</strong>来避免这种尴尬。</p>
+<p>点击<strong>工具</strong>-<strong>选项</strong>-<strong>排除列表</strong>（左侧倒数第三个），前两个选项建议不勾选。勾选<strong>启用排除列表</strong>，然后点击<strong>添加文件夹</strong>，选中你想排除的文件目录，以后每次搜索都会忽略这个目录，这个目录的文件不会出现在搜索结果里。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFvHU.png"></p>
+<p>最下方的排除文件，输入<code>*.lnk;~!*</code> 就可以排除掉快捷方式文件和 office 隐藏文件，如果想排除更多文件类型，只需要在后面继续输入就可以，注意使用英文的分号隔开。比如排除 AVI 文件，就输入<code>;\*.avi</code></p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCFzEF.png"></p>
+<h4 id="快捷键启动"><a href="#快捷键启动" class="headerlink" title="快捷键启动"></a>快捷键启动</h4><p>建议开机后手动运行一次 everything 主程序，然后保持它在后台运行（出现在任务栏的右下侧，和时间、声音、微信、QQ 一样），点击<strong>工具</strong>-<strong>选项</strong>-<strong>界面</strong>（左侧第二个），选中<strong>后台运行</strong>就可以了，这样每次用完直接点击关闭，软件不会完全退出，而是停留在后台。继续<strong>工具</strong>-<strong>选项</strong>-<strong>快捷键</strong>，在<strong>新建窗口快捷键</strong>里，输入一个顺手的快捷键，按一下就可以快速呼出软件界面进行搜索，建议快捷键<code>Alt+Z</code>。整个流程行云流水，软件在后台占用内存非常小可以忽略不记，完全不会拖慢电脑运行。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCkSN4.png" alt="后台运行只占用极少的内存"><span class="image-caption">后台运行只占用极少的内存</span></p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCkp4J.png" alt="个人建议快捷键Alt+Z"><span class="image-caption">个人建议快捷键Alt+Z</span></p>
+<h4 id="复制文件夹下所有的文件名"><a href="#复制文件夹下所有的文件名" class="headerlink" title="复制文件夹下所有的文件名"></a>复制文件夹下所有的文件名</h4><p>这个是软件隐藏的功能，默认没有开启，<strong>工具</strong>-<strong>选项</strong>-<strong>上下文菜单</strong>-<strong>复制文件名到剪贴板</strong>，选择<strong>显示此项</strong>。在搜索框里输入一个文件夹的完整目录路径，比如：<code>C:\Program Files\</code>，（最后的<code>\</code>不能省略，回车键上方的那个案件），下方就会显示这个目录下所有的文件夹和文件，不区分层级的全部显示出来。接下来只需要全选或者鼠标拖动选中，鼠标右键<strong>复制文件名到剪贴板</strong>就可以粘贴到其他地方了。</p>
+<p>如果你只想要第一层级的文件，点击路径排序然后手动拖选或者继续在搜索框里输入就可以，注意文件夹名称一定要以<code>\</code>结尾。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCkP3R.gif" alt="动画：复制文件名（不复制文件）"><span class="image-caption">动画：复制文件名（不复制文件）</span></p>
+<h4 id="局域网里快速传输文件"><a href="#局域网里快速传输文件" class="headerlink" title="局域网里快速传输文件"></a>局域网里快速传输文件</h4><p>同一个局域网里传输大文件，之前很多人都会使用 QQ 或者 U 盘。使用 QQ 在局域网内传输文件速度非常快，可现在越来越多的人已经不习惯用 QQ 了，微信的 PC 版很可惜没有这个功能，用 U 盘也挺麻烦，因为要把文件拷贝两次。everything 其实有一个隐藏功能，可以让同事直接使用浏览器下载你硬盘上的文件，速度和 QQ 局域网传输文件一样快。</p>
+<p>打开 everything 的<strong>工具</strong>-<strong>选项</strong>-<strong>HTTP 服务器</strong>，勾选<strong>启动 HTTP 服务器</strong>和<strong>允许 HTTP 文件下载</strong>，确认后 windows 会弹出防火墙提示，点击允许就可以了。</p>
+<p>接下来我们只需要告诉同事我们自己电脑的 IP 地址，同事在他的电脑浏览器里输入我们的 IP 地址，回车就可以通过浏览器查看我们硬盘上的所有文件，搜索想要传输的文件，点击文件名（或者右键链接另存为）就直接直接下载。下载过程非常快，同事的下载对我们自己电脑的操作几乎没有任何影响。</p>
+<p>提示：如果传输的是一个文件夹目录，提前使用 Zip、Rar 等压缩软件压缩一下。同事下载完成后，记得取消勾选<strong>启动 HTTP 服务器</strong>，不然你电脑里的文件就毫无机密可言了。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/QCkig1.gif" alt="动画：启动Http服务器"><span class="image-caption">动画：启动Http服务器</span></p>
+<h3 id="扩展阅读：文件名命名的一些建议"><a href="#扩展阅读：文件名命名的一些建议" class="headerlink" title="扩展阅读：文件名命名的一些建议"></a>扩展阅读：文件名命名的一些建议</h3><p>使用 everything，一定要养成良好的文件名命名习惯。这样我们才能根据文件名快速搜索查找文件，文件内容搜索是一个很不可靠的功能，因为很多的文件内容无法用文字描述，比如音乐视频。有一些软件建议给文件增加<strong>标签</strong>来定义和管理，其实多此一举，良好的文件名命名习惯完全可以替代标签，通用性也更强（文件名这个东西任何系统都支持，标签就不一定了）。</p>
+<h4 id="文件名详细一些，不要怕麻烦"><a href="#文件名详细一些，不要怕麻烦" class="headerlink" title="文件名详细一些，不要怕麻烦"></a>文件名详细一些，不要怕麻烦</h4><p>简洁的文件名没有任何意义，只要信息量足够多的文件名，才能给搜索管理带来便利，比如去照片很多人喜欢用时间来做文件名，<code>20191010.jpg</code>这样的文件名能说明什么呢？只有<code>北京故宫-20191010.jpg</code>这样的文件才有含义，如果是<code>北京故宫-女朋友-20191010.jpg</code>就更好了。文件名的命名都是碎片式的，每次只需要花费很短的时间，但后期搜索管理时会节省大量时间。</p>
+<h4 id="增加上层目录信息"><a href="#增加上层目录信息" class="headerlink" title="增加上层目录信息"></a>增加上层目录信息</h4><p>同样是照片，有些人文件夹名称是<code>北京故宫 20191010</code>，目录下的文件名是<code>01.jpg</code>，<code>02.jpg</code>，这样的文件名是没有意义的。因为可能另一个文件目录<code>天津 20191014</code>下面也是<code>01.jpg</code>，<code>02.jpg</code>，这其实非常尴尬。一方面不包含上层目录信息的文件名没有含义搜索出来必须打开才知道内容，另一方面一旦操作失误，可能会把相同文件名的文件覆盖掉，一旦覆盖就意味着文件丢失，这比删除文件更难搞，没有回收站让你后悔。</p>
+<p>文件命名建议：<code>北京故宫-20191010-01.jpg</code>，<code>北京故宫-20191010-02.jpg</code></p>
+<h4 id="使用-或者空格来进行分隔和分类"><a href="#使用-或者空格来进行分隔和分类" class="headerlink" title="使用-或者空格来进行分隔和分类"></a>使用-或者空格来进行分隔和分类</h4><p>有些人可能听说过所谓的大驼峰、小驼峰命名法，使用大小写字母来区分单词让文件名更方便阅读，个人不建议，首先这种方法只适用于英文对中文无效。其次就算是英文，也建议使用空格或者-来进行文字分隔，而不是大小写字母，因为不同的系统对大小写字母是不同的处理方式，<code>a.jpg</code>和<code>A.jpg</code>在 Linux 下是不同的文件，而在 Windows 下是相同的文件。</p>
+<p>所以不论是英文还是中文，建议都使用空格或者-来进行分隔，例如<code>2019 经营分析-三季度-V1.ppt</code>，这样的命名法同样直观便于阅读，各种系统都通用。</p>
+<h4 id="文件名中增加时间"><a href="#文件名中增加时间" class="headerlink" title="文件名中增加时间"></a>文件名中增加时间</h4><p>虽然文件属性里有创建时间和修改时间，但是很少有人能搞明白这里面的关系，所以建议必要的时候在文件名里增加时间，月份-日期就足够了，年份、时分秒没有意义（加上年份的话 8 位连续数字不方便阅读，年份可以用创建时间来判断区分），建议时间放在文件名的末尾。</p>
+<p>文件命名建议：<code>2019 经营分析-三季度-V1-1031.ppt</code></p>
+<h4 id="包含来源和去向"><a href="#包含来源和去向" class="headerlink" title="包含来源和去向"></a>包含来源和去向</h4><p>工作中经常会遇到这样的情况，我收到小王发来的文件，修改加工后发给小李，这个动作可能每天都要进行好几次。建议在文件名后面加上这个文件的来源和去向，这样以后不论是小王还是小李提到哪个文件，都可以快速的搜索定位。</p>
+<p>举例：小李说上次你发我的那个文件找不到了，再给我发一次，使用 everything 搜索<code>小李</code>就可以瞬间找到硬盘上所有发给小李的文件，按时间和内容判断即可；小王说上次给你发的那个 19 年 4 月的数据表你忘记处理了？你使用 everything 搜索<code>19 小王</code>，结果是 0，那么就可以理直气壮的告诉他，你没给我发过这个东西。</p>
+<p>文件命名建议：<code>2019 经营分析-三季度-V1 from 小王 to 小李.ppt</code></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>术不学是一个个人公众号，不定期分享一些软件或者影评。</p>
+<p>软件方面我从来不仅仅介绍功能，也不会讲解高级用法，例如 everything 还有通配符、正则表达式等等高级玩法。我认为这些功能虽然很厉害，但是对普通职场人而言学习难度大时间长，我更关注对普通人立刻可以上手的、对日常工作效率有显著提升的功能和用法。如果对你有帮助，欢迎转发评论。</p>
+<p><img src="https://s2.ax1x.com/2019/11/27/Q9HlPe.png" alt="术不学，我的个人公众号"><span class="image-caption">术不学，我的个人公众号</span></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="术不学 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag"># 技巧</a>
+              <a href="/tags/everything/" rel="tag"># everything</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" rel="tag"># 文件管理</a>
+              <a href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag"># 搜索</a>
+              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/29d3ca6d.html" rel="prev" title="《小丑》几乎完美的个人表演，但并不是最精彩的电影">
+      <i class="fa fa-chevron-left"></i> 《小丑》几乎完美的个人表演，但并不是最精彩的电影
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/e981870c.html" rel="next" title="近期影评-12月-1">
+      近期影评-12月-1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E9%A2%84%E8%A7%88"><span class="nav-text">快速预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%8E%A9%E6%B3%95"><span class="nav-text">特殊玩法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95"><span class="nav-text">打开文件所在目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%99%A4%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95"><span class="nav-text">排除一些文件或者目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%90%AF%E5%8A%A8"><span class="nav-text">快捷键启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-text">复制文件夹下所有的文件名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91%E9%87%8C%E5%BF%AB%E9%80%9F%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="nav-text">局域网里快速传输文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB%EF%BC%9A%E6%96%87%E4%BB%B6%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AE%AE"><span class="nav-text">扩展阅读：文件名命名的一些建议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E8%AF%A6%E7%BB%86%E4%B8%80%E4%BA%9B%EF%BC%8C%E4%B8%8D%E8%A6%81%E6%80%95%E9%BA%BB%E7%83%A6"><span class="nav-text">文件名详细一些，不要怕麻烦</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E4%B8%8A%E5%B1%82%E7%9B%AE%E5%BD%95%E4%BF%A1%E6%81%AF"><span class="nav-text">增加上层目录信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-%E6%88%96%E8%80%85%E7%A9%BA%E6%A0%BC%E6%9D%A5%E8%BF%9B%E8%A1%8C%E5%88%86%E9%9A%94%E5%92%8C%E5%88%86%E7%B1%BB"><span class="nav-text">使用-或者空格来进行分隔和分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%AD%E5%A2%9E%E5%8A%A0%E6%97%B6%E9%97%B4"><span class="nav-text">文件名中增加时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E6%9D%A5%E6%BA%90%E5%92%8C%E5%8E%BB%E5%90%91"><span class="nav-text">包含来源和去向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="术不学"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">术不学</p>
+  <div class="site-description" itemprop="description">一个个人写东西的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:kekeyu260@gmail.com" title="E-Mail → mailto:kekeyu260@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.weibo.com/2055422355" title="Weibo → https:&#x2F;&#x2F;www.weibo.com&#x2F;2055422355" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/kekeyu2266/?hl=zh-cn" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;kekeyu2266&#x2F;?hl&#x3D;zh-cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">术不学</span>
+  <span>&nbsp;<a target="_blank" rel="noopener" href="http://beian.miit.gov.cn">陕ICP备20000041号-1</a></span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+  <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
+  <img src="/images/upyun.png" width="80">
+  </a>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
