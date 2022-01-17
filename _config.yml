@@ -103,7 +103,7 @@ theme: next
 deploy:
   -
     type: git
-    repository: https://github.com/kekeyu2266/kekeyu2266.github.io
+    repository: git@github.com:kekeyu2266/kekeyu2266.github.io.git
     branch: master
   #-
   #  type: leancloud_counter_security_sync
